@@ -121,11 +121,11 @@ public class SocketSystem : Singleton<SocketSystem>
                 "1001:{\"game_id\":123}";
             ReactToUnity(testMessage);
         }
-   //не используем
+        //не используем
         if (Input.GetKeyDown(KeyCode.Alpha3)) // Нажать "3" для теста Continue
         {
-           // string testMessage = "1002:{\"game_id\":123}";
-           // ReactToUnity(testMessage);
+            // string testMessage = "1002:{\"game_id\":123}";
+            // ReactToUnity(testMessage);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4)) // Нажать "3" для теста Continue
@@ -203,15 +203,15 @@ public class SocketSystem : Singleton<SocketSystem>
                 HandleAppliedBoostsMessage(appliedBoostsMessage);
                 break;
 
-            case "1002": // Continue
-                var continueMessage = JsonUtility.FromJson<GameIdMessage>(jsonData);
+            case "1002": // Continue / не используем
+                /* var continueMessage = JsonUtility.FromJson<GameIdMessage>(jsonData);
                 if (!IsGameIdValid(continueMessage.game_id))
                 {
                     SendGameIdMismatchError(continueMessage.game_id);
                     return;
                 }
 
-                HandleContinueMessage(continueMessage);
+                HandleContinueMessage(continueMessage); */
                 break;
             case "1003": // restart
                 var RestartSceneMessage = JsonUtility.FromJson<GameIdMessage>(jsonData);
@@ -299,11 +299,11 @@ public class SocketSystem : Singleton<SocketSystem>
 
     }
 
-    private void HandleContinueMessage(GameIdMessage message)
+    /* private void HandleContinueMessage(GameIdMessage message)
     {
         CustomDebug.Log($"Continue: Game ID = {message.game_id}");
         //  GameManager.Instance.ContinueLevel();
-    }
+    } */
 
     private void HandleRestartSceneMessage(GameIdMessage restartSceneMessage)
     {
